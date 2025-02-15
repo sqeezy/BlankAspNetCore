@@ -13,7 +13,7 @@ COPY --link BlankAspnetCore/. .
 RUN dotnet publish  --no-restore -o /app
 
 # Runtime stage
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS APP
 EXPOSE 8080
 WORKDIR /app
 COPY --link --from=build /app .
