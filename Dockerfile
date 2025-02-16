@@ -14,6 +14,7 @@ RUN dotnet publish  --no-restore -o /app
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS APP
+RUN apt update && apt install -y curl && rm -rf /var/lib/apt/lists/*
 EXPOSE 8080
 WORKDIR /app
 COPY --link --from=build /app .
